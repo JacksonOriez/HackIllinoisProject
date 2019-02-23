@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="MainPage.css">
+    <body>
+      <img src="usa-night.jpg" style = "width:900px;height:auto;" usemap="#workmap">
+        <map name="workmap">
+          <area id="Chicago" shape="circle" coords="575,230,25" alt="Chicago">
+          <area id="NYC" shape="circle" coords="800,225,26" alt="NYC">
+          <area id="Jackson" shape="circle" coords="550,425,24" alt="Jackson">
+          <area id="LA" shape="circle" coords="100,350,23" alt="LA">
+          <area id="Seatle" shape="circle" coords="90,75,27" alt="Seatle">
+        </map>
+
+    <div id="first_modal" class="modal">
+
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1> You chose
+          <a id="city_decision"><a>
+        </h1><br>
+        <p>Please enter a date (dd/mm/yyy)</p>
+        <form>
+          <input id="input_date" type="text" name="date"> <br><br>
+          <button id="date_button">Next</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div id="flights_modal" class="modal">
+
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Landed Flights</h1>
+        <form>
+          <input id="flight_submit" type="submit" value="Submit">
+        </form>
+      </div>
+
+    </div>
+
+    <script>
+
+      var modal = document.getElementById("first_modal");
+      var chicago_star = document.getElementById("Chicago");
+      var nyc_star = document.getElementById("NYC");
+      var la_star = document.getElementById("LA");
+      var jackson_star = document.getElementById("Jackson");
+      var seatle_star = document.getElementById("Seatle");
+      var date = document.getElementById("input_date");
+      var date_submit_btn = document.getElementById("date_button");
+      var span = document.getElementsByClassName("close")[0];
+
+      chicago_star.onclick = function() {
+        document.getElementById("city_decision").innerHTML="Chicago";
+        modal.style.display = "block";
+      }
+
+      nyc_star.onclick = function() {
+        document.getElementById("city_decision").innerHTML="New York City";
+        modal.style.display = "block";
+      }
+
+      la_star.onclick = function() {
+        document.getElementById("city_decision").innerHTML="Los Angeles";
+        modal.style.display = "block";
+      }
+
+      jackson_star.onclick = function() {
+        document.getElementById("city_decision").innerHTML="Jackson";
+        modal.style.display = "block";
+      }
+
+      seatle_star.onclick = function() {
+        document.getElementById("city_decision").innerHTML="Seatle";
+        modal.style.display = "block";
+      }
+
+      date_submit_btn.onclick = function() {
+        modal.style.display = "none";
+        modal = getElementById("flights_modal");
+        modal.style.display = "block";
+      }
+
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+    </script>
+
+  </body>
+</head>
+</html>
