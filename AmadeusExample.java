@@ -8,13 +8,15 @@ import com.amadeus.resources.Location;
 public class AmadeusExample {
     public static void main(String[] args) throws ResponseException {
         Amadeus amadeus = Amadeus
-                .builder("REPLACE_BY_YOUR_API_KEY", "REPLACE_BY_YOUR_API_SECRET")
+                .builder("HMhWxea49LH9nTnOcmGAAUrl24mPBQnI", "8iYhXIoYWZP3OLtr")
                 .build();
 
-        Location[] locations = amadeus.referenceData.locations.get(Params
-                .with("keyword", "LON")
-                .and("subType", Locations.ANY));
+        Location[] locations = amadeus.referenceData.locations.airports.get(Params
+                .with("latitude", 0.1278)
+                .and("longitude", 51.5074));
 
-        System.out.println(locations);
+        for (int i = 0; i < locations.length; i++) {
+            System.out.println(locations[i].toString());
+        }
     }
 }
