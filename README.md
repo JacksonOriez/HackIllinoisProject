@@ -16,4 +16,4 @@ There is currently no complete product to install. If you would like to contribu
 [Here](https://github.com/JacksonOriez/HackIllinoisProject/blob/master/CONTRIBUTORS.md) is everyone who contributed in any way.
 
 ## License 
-idk yet
+[Mozilla Public License, v. 2.0](https://github.com/JacksonOriez/HackIllinoisProject/blob/master/LICENSE.md)
