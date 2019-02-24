@@ -10,9 +10,10 @@ The idea for this project came from looking at the different functions that the 
 Want to contribute to our project? Just follow the installation intsructions and code away! All updates will be reviewed by us before they are fully pushed.
 
 ## Installation (for those looking to contribute)
-idk
+There is currently no complete product to install. If you would like to contribute, go [here](https://github.com/JacksonOriez/HackIllinoisProject/blob/master/CONTRIBUTING.md) and follow the instructions :)
 
 ## Contributors
 [Here](https://github.com/JacksonOriez/HackIllinoisProject/blob/master/CONTRIBUTORS.md) is everyone who contributed in any way.
 
 ## License 
+idk yet
