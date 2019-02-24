@@ -1,1 +1,2 @@
-yeetus
+# Contributing
+For the front-end, just clone/download the project, open your favorite text editor, and there you go! For the back-end you'll need to create a project in the Intellij IDE for java. Create the project using Maven and copy and paste the .iml, .xml, and .java files in their respective places.
