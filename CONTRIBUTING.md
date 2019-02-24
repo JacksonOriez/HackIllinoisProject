@@ -1,2 +1,2 @@
 # Contributing
-For the front-end, just clone/download the project, open your favorite text editor, and there you go! For the back-end you'll need to create a project in the Intellij IDE for java. Create the project using Maven and copy and paste the .iml, .xml, and .java files in their respective places.
+For the front-end, just clone/download the project, open your favorite text editor, and there you go! For the back-end you'll need to create a project in the Intellij IDE for java. Create the project using Maven and copy and paste the .iml, .xml, and .java files in their respective places. To get access to the Amadeus API used, sign up as a [developer](http://developers.amadeus.com) and create a new app to get access to your two keys.
