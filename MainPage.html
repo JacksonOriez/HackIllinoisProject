@@ -1,94 +1,162 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="MainPage.css">
     <body>
       <img src="usa-night.jpg" style = "width:900px;height:auto;" usemap="#workmap">
         <map name="workmap">
-          <area id="Chicago" shape="circle" coords="575,230,25" alt="Chicago">
-          <area id="NYC" shape="circle" coords="800,225,26" alt="NYC">
-          <area id="Jackson" shape="circle" coords="550,425,24" alt="Jackson">
-          <area id="LA" shape="circle" coords="100,350,23" alt="LA">
-          <area id="Seatle" shape="circle" coords="90,75,27" alt="Seatle">
+          <area id="Chicago" shape="circle" coords="575,230,25" alt="Chicago" data-toggle="modal" data-target="#first_modal">
+          <area id="NYC" shape="circle" coords="800,225,26" alt="NYC" data-toggle="modal" data-target="#first_modal">
+          <area id="Jackson" shape="circle" coords="550,425,24" alt="Jackson" data-toggle="modal" data-target="#first_modal">
+          <area id="LA" shape="circle" coords="100,350,23" alt="LA" data-toggle="modal" data-target="#first_modal">
+          <area id="Seattle" shape="circle" coords="90,75,27" alt="Seattle" data-toggle="modal" data-target="#first_modal">
         </map>
 
-    <div id="first_modal" class="modal">
+    <div class="modal fade" id="first_modal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h1> You Chose
+              <a id="city_decision"><a>
+            </h1><br>
+          </div>
+          <div class="modal-body">
+            <p>Please enter a date (Year-Month-Date)</p>
+            <input id="input_date" type="text" name="date"> <br><br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input id="date_button"type="submit" value="Next">
+          </div>
+        </div>
 
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h1> You chose
-          <a id="city_decision"><a>
-        </h1><br>
-        <p>Please enter a date (dd/mm/yyy)</p>
-        <form>
-          <input id="input_date" type="text" name="date"> <br><br>
-          <button id="date_button">Next</button>
-        </form>
       </div>
-
     </div>
 
-    <div id="flights_modal" class="modal">
+    <div class="modal fade" id="flights_modal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h2>Available Flights</h2><br>
+          </div>
+          <div class="modal-body">
+            <p>Please select a flight to continue</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button id="flight_chosen">Next</button>
+          </div>
+        </div>
 
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h1>Landed Flights</h1>
-        <form>
-          <input id="flight_submit" type="submit" value="Submit">
-        </form>
       </div>
+    </div>
 
+    <div class="modal fade" id="plane_modal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3>Flight Info</h3>
+          </div>
+          <div class="modal-body">
+            <p>There's probably some seats lol</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input id="plane_info" type="submit" value="OK">
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <script>
 
-      var modal = document.getElementById("first_modal");
       var chicago_star = document.getElementById("Chicago");
       var nyc_star = document.getElementById("NYC");
       var la_star = document.getElementById("LA");
       var jackson_star = document.getElementById("Jackson");
-      var seatle_star = document.getElementById("Seatle");
-      var date = document.getElementById("input_date");
+      var seattle_star = document.getElementById("Seattle");
+      var date = document.getElementById("input_date").value;
       var date_submit_btn = document.getElementById("date_button");
       var span = document.getElementsByClassName("close")[0];
+      var flight_button = document.getElementById("flight_chosen");
+      var ok_button = document.getElementById("plane_info");
+      var city;
 
       chicago_star.onclick = function() {
         document.getElementById("city_decision").innerHTML="Chicago";
-        modal.style.display = "block";
+        city = "Chicago";
       }
 
       nyc_star.onclick = function() {
         document.getElementById("city_decision").innerHTML="New York City";
-        modal.style.display = "block";
+        city = "New York City";
       }
 
       la_star.onclick = function() {
         document.getElementById("city_decision").innerHTML="Los Angeles";
-        modal.style.display = "block";
+        city = "Los Andgeles";
       }
 
       jackson_star.onclick = function() {
         document.getElementById("city_decision").innerHTML="Jackson";
-        modal.style.display = "block";
+        city = "Jackson";
       }
 
-      seatle_star.onclick = function() {
-        document.getElementById("city_decision").innerHTML="Seatle";
-        modal.style.display = "block";
+      seattle_star.onclick = function() {
+        document.getElementById("city_decision").innerHTML="Seattle";
+        city = "Seattle";
       }
 
       date_submit_btn.onclick = function() {
-        modal.style.display = "none";
-        modal = getElementById("flights_modal");
-        modal.style.display = "block";
+        var httpRequest;
+
+        function makeRequest() {
+          httpRequest = new XMLHttpRequest();
+
+          if (!httpRequest) {
+            alert('Cannot create an XMLHTTP instance');
+            return false;
+          }
+          httpRequest.onreadystatechange = alertContents;
+          httpRequest.open('POST', url);
+          httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          httpRequest.send('location=' + encodeURIComponent(city) + 'date=' + encodeURIComponent(date));
+        }
+
+        function alertContents() {
+          if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+              alert(httpRequest.responseText);
+            } else {
+              alert('There was a problem with the request.');
+            }
+          }
+        }
+        $('#first_modal').modal('hide');
+        $('#flights_modal').modal('show');
       }
 
-      span.onclick = function() {
-        modal.style.display = "none";
+      flight_button.onclick = function() {
+        $('#flights_modal').modal('hide');
+        $('#plane_modal').modal('show');
       }
+
+      ok_button.onclick = function() {
+        $('#plane_modal').modal('hide');
+        window.location.reload(true);
+      }
+
+
 
     </script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </head>
 </html>
